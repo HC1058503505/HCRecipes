@@ -1,64 +1,61 @@
 //
-//  RecipesHomeViewController.swift
+//  RecipesResultsViewController.swift
 //  HCRecipes
 //
-//  Created by cgtn on 2018/11/20.
-//  Copyright © 2018 cgtn. All rights reserved.
+//  Created by 侯聪 on 2019/6/4.
+//  Copyright © 2019 cgtn. All rights reserved.
 //
 
 import UIKit
-import RxCocoa
+import SnapKit
 import RxSwift
-class RecipesHomeViewController: UIViewController {
-    
-    fileprivate let disposeBag = DisposeBag()
+class RecipesResultsViewController: UIViewController {
+
+    let subject = PublishSubject<String>()
     fileprivate var recipeModels = [RecipeModel]()
     fileprivate var page = 0
-    fileprivate let searchResultVC = RecipesResultsViewController()
+    fileprivate let disposeBag = DisposeBag()
+    fileprivate  var searchKey = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        view.backgroundColor = UIColor.white
-        navigationController?.navigationBar.prefersLargeTitles = true
-        let tableView = UITableView(frame: UIScreen.main.bounds, style: UITableView.Style.plain)
+        let tableView = UITableView(frame: CGRect.zero, style: UITableView.Style.plain)
+        view.backgroundColor = UIColor.orange
         tableView.dataSource = self
-        tableView.rowHeight = 120
+        tableView.rowHeight = 120.0
         view.addSubview(tableView)
-
-        
-        
-        let searchVC = UISearchController(searchResultsController: searchResultVC)
-        definesPresentationContext = true
-        searchVC.searchBar.placeholder = "请输入搜索内容"
-        searchVC.searchBar.barTintColor = UIColor.white
-        searchVC.searchBar.returnKeyType = .done
-        navigationItem.searchController = searchVC
-        navigationItem.hidesSearchBarWhenScrolling = true
-        searchVC.searchBar.rx.text.orEmpty
-            .changed
-            .distinctUntilChanged()
-            .throttle(0.5, scheduler: MainScheduler.instance)
-            .bind(to: searchResultVC.subject)
-            .disposed(by: disposeBag)
+        tableView.snp.makeConstraints { (make) in
+            make.edges.equalTo(view)
+        }
         
         var tableViewOriginOffsetY = tableView.contentOffset.y
         var tableViewContensize = tableView.contentSize
         
-        MoyaHTTP.searchRecipes(keywords: "家常菜", page: page)
-            .subscribe(onNext: {[weak self] (recipes) in
-                self?.recipeModels.append(contentsOf: recipes)
-                tableView.reloadData()
-                tableViewOriginOffsetY = tableView.contentOffset.y
-                tableViewContensize = tableView.contentSize
-                self!.page = self!.page + 1
+        
+        subject.asObserver()
+            .subscribe(onNext: {[weak self] searchResult in
+                self?.recipeModels.removeAll()
+                self?.searchKey = searchResult
+                self?.page = 0
+                MoyaHTTP.searchRecipes(keywords: searchResult, page: self!.page)
+                    .subscribe(onNext: { (recipes) in
+                        self?.recipeModels.append(contentsOf: recipes)
+                        tableView.reloadData()
+                        tableViewOriginOffsetY = tableView.contentOffset.y
+                        tableViewContensize = tableView.contentSize
+                        self!.page = self!.page + 1
+                    })
+                    .disposed(by: self!.disposeBag)
             })
             .disposed(by: disposeBag)
         
         var isPullUpToRefresh = false
         var isPullDownToRefresh = false
         let tableViewH = tableView.frame.height
+
         
         tableView.rx.willEndDragging.asObservable()
             .subscribe(onNext: { (_, _) in
@@ -74,7 +71,7 @@ class RecipesHomeViewController: UIViewController {
             .subscribe(onNext: { _ in
                 if isPullUpToRefresh {
                     debugPrint("上拉加载")
-                    MoyaHTTP.searchRecipes(keywords: "家常菜", page: self.page)
+                    MoyaHTTP.searchRecipes(keywords: self.searchKey, page: self.page)
                         .subscribe(onNext: {[weak self] (recipes) in
                             self?.recipeModels.append(contentsOf: recipes)
                             tableView.reloadData()
@@ -113,22 +110,9 @@ class RecipesHomeViewController: UIViewController {
     }
     */
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-//        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-//        navigationController?.navigationBar.shadowImage = UIImage()
-        
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
-        navigationController?.navigationBar.shadowImage = nil
-    }
-
 }
 
-extension RecipesHomeViewController: UITableViewDataSource {
+extension RecipesResultsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return recipeModels.count
     }
@@ -141,5 +125,5 @@ extension RecipesHomeViewController: UITableViewDataSource {
         cell.confitureCell(recipeModel: recipe)
         return cell
     }
-
+    
 }

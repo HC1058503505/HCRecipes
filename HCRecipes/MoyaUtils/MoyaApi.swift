@@ -26,7 +26,7 @@ extension MoyaApi: TargetType{
             case .threeMeals:
                 return "/main7/recommend/recommend"
             case .recommendWeek:
-                return "main7/recommend/recommend"
+                return "/main7/recommend/recommend"
         }
     }
     

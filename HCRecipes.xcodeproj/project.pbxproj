@@ -24,6 +24,7 @@
 		08DFC1D421A24CA30092727B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08DFC1D321A24CA30092727B /* Assets.xcassets */; };
 		08DFC1D721A24CA30092727B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08DFC1D521A24CA30092727B /* LaunchScreen.storyboard */; };
 		B42346306E0FC170401AEB0D /* Pods_HCRecipes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BDCA200B170FD9CEB2DCD81 /* Pods_HCRecipes.framework */; };
+		ECE90E1C22A6B4C500A263EF /* RecipesResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE90E1B22A6B4C500A263EF /* RecipesResultsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		3B7FA0F399E5B2EDBD7BEACE /* Pods-HCRecipes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCRecipes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HCRecipes/Pods-HCRecipes.debug.xcconfig"; sourceTree = "<group>"; };
 		43AF17D6A1A880E957891909 /* Pods-HCRecipes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCRecipes.release.xcconfig"; path = "Pods/Target Support Files/Pods-HCRecipes/Pods-HCRecipes.release.xcconfig"; sourceTree = "<group>"; };
 		9BDCA200B170FD9CEB2DCD81 /* Pods_HCRecipes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HCRecipes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECE90E1B22A6B4C500A263EF /* RecipesResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesResultsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,8 +68,9 @@
 			isa = PBXGroup;
 			children = (
 				0800C4CD21A3C25C0058DC68 /* RecipesHomeViewController.swift */,
-				0800C4CF21A3C4720058DC68 /* RecipesMeViewController.swift */,
+				ECE90E1B22A6B4C500A263EF /* RecipesResultsViewController.swift */,
 				0800C4D621A3F24C0058DC68 /* RecipesCategoryViewController.swift */,
+				0800C4CF21A3C4720058DC68 /* RecipesMeViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0800C4D521A3C4C60058DC68 /* RecipesNavigationController.swift in Sources */,
+				ECE90E1C22A6B4C500A263EF /* RecipesResultsViewController.swift in Sources */,
 				08DC347F21A2538B00A15994 /* MoyaApi.swift in Sources */,
 				08DFC1CF21A24CA20092727B /* ViewController.swift in Sources */,
 				08DC348721A286D900A15994 /* ViewModelProtocol.swift in Sources */,

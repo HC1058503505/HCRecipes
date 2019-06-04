@@ -13,6 +13,8 @@ import RxSwift
 class MoyaHTTP  {
     static let MoyaProviderHTTP = MoyaProvider<MoyaApi>()
     
+    
+    
     static func searchRecipes(keywords:String , page: Int) -> Observable<[RecipeModel]> {
         
         return MoyaProviderHTTP.rx.request(.recipes(keywords: keywords, page: page)).asObservable()
