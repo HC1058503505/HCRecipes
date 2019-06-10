@@ -13,13 +13,13 @@
 		0800C4D521A3C4C60058DC68 /* RecipesNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0800C4D421A3C4C60058DC68 /* RecipesNavigationController.swift */; };
 		0800C4D721A3F24C0058DC68 /* RecipesCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0800C4D621A3F24C0058DC68 /* RecipesCategoryViewController.swift */; };
 		0800C4DA21A404EC0058DC68 /* RecipesTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0800C4D921A404EC0058DC68 /* RecipesTools.swift */; };
+		08D00F0C22A8D1AC0041EC82 /* RecipesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D00F0B22A8D1AC0041EC82 /* RecipesDetailViewController.swift */; };
 		08DC347F21A2538B00A15994 /* MoyaApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DC347E21A2538B00A15994 /* MoyaApi.swift */; };
 		08DC348121A25AD800A15994 /* MoyaHTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DC348021A25AD800A15994 /* MoyaHTTP.swift */; };
 		08DC348521A260D100A15994 /* RecipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DC348421A260D100A15994 /* RecipeModel.swift */; };
 		08DC348721A286D900A15994 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DC348621A286D900A15994 /* ViewModelProtocol.swift */; };
 		08DC348921A2AB3900A15994 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DC348821A2AB3900A15994 /* RecipeTableViewCell.swift */; };
 		08DFC1CD21A24CA20092727B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DFC1CC21A24CA20092727B /* AppDelegate.swift */; };
-		08DFC1D221A24CA20092727B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08DFC1D021A24CA20092727B /* Main.storyboard */; };
 		08DFC1D421A24CA30092727B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08DFC1D321A24CA30092727B /* Assets.xcassets */; };
 		08DFC1D721A24CA30092727B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08DFC1D521A24CA30092727B /* LaunchScreen.storyboard */; };
 		B42346306E0FC170401AEB0D /* Pods_HCRecipes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BDCA200B170FD9CEB2DCD81 /* Pods_HCRecipes.framework */; };
@@ -33,6 +33,7 @@
 		0800C4D421A3C4C60058DC68 /* RecipesNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesNavigationController.swift; sourceTree = "<group>"; };
 		0800C4D621A3F24C0058DC68 /* RecipesCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesCategoryViewController.swift; sourceTree = "<group>"; };
 		0800C4D921A404EC0058DC68 /* RecipesTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesTools.swift; sourceTree = "<group>"; };
+		08D00F0B22A8D1AC0041EC82 /* RecipesDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesDetailViewController.swift; sourceTree = "<group>"; };
 		08DC347E21A2538B00A15994 /* MoyaApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaApi.swift; sourceTree = "<group>"; };
 		08DC348021A25AD800A15994 /* MoyaHTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaHTTP.swift; sourceTree = "<group>"; };
 		08DC348421A260D100A15994 /* RecipeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeModel.swift; sourceTree = "<group>"; };
@@ -40,7 +41,6 @@
 		08DC348821A2AB3900A15994 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		08DFC1C921A24CA20092727B /* HCRecipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HCRecipes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08DFC1CC21A24CA20092727B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		08DFC1D121A24CA20092727B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		08DFC1D321A24CA30092727B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		08DFC1D621A24CA30092727B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		08DFC1D821A24CA30092727B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -69,6 +69,7 @@
 				ECE90E1B22A6B4C500A263EF /* RecipesResultsViewController.swift */,
 				0800C4D621A3F24C0058DC68 /* RecipesCategoryViewController.swift */,
 				0800C4CF21A3C4720058DC68 /* RecipesMeViewController.swift */,
+				08D00F0B22A8D1AC0041EC82 /* RecipesDetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -144,7 +145,6 @@
 				08DC347D21A2510100A15994 /* MoyaUtils */,
 				08DFC1CC21A24CA20092727B /* AppDelegate.swift */,
 				08DC348821A2AB3900A15994 /* RecipeTableViewCell.swift */,
-				08DFC1D021A24CA20092727B /* Main.storyboard */,
 				08DFC1D321A24CA30092727B /* Assets.xcassets */,
 				08DFC1D521A24CA30092727B /* LaunchScreen.storyboard */,
 				08DFC1D821A24CA30092727B /* Info.plist */,
@@ -231,7 +231,6 @@
 			files = (
 				08DFC1D721A24CA30092727B /* LaunchScreen.storyboard in Resources */,
 				08DFC1D421A24CA30092727B /* Assets.xcassets in Resources */,
-				08DFC1D221A24CA20092727B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0800C4D521A3C4C60058DC68 /* RecipesNavigationController.swift in Sources */,
+				08D00F0C22A8D1AC0041EC82 /* RecipesDetailViewController.swift in Sources */,
 				ECE90E1C22A6B4C500A263EF /* RecipesResultsViewController.swift in Sources */,
 				08DC347F21A2538B00A15994 /* MoyaApi.swift in Sources */,
 				08DC348721A286D900A15994 /* ViewModelProtocol.swift in Sources */,
@@ -312,14 +312,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		08DFC1D021A24CA20092727B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				08DFC1D121A24CA20092727B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		08DFC1D521A24CA30092727B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -452,6 +444,7 @@
 			baseConfigurationReference = 3B7FA0F399E5B2EDBD7BEACE /* Pods-HCRecipes.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 899W82T4GS;
 				INFOPLIST_FILE = HCRecipes/Info.plist;
@@ -459,10 +452,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.houcong.HCRecipes;
+				PRODUCT_BUNDLE_IDENTIFIER = com.recipes.mine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -471,6 +464,7 @@
 			baseConfigurationReference = 43AF17D6A1A880E957891909 /* Pods-HCRecipes.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 899W82T4GS;
 				INFOPLIST_FILE = HCRecipes/Info.plist;
@@ -478,10 +472,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.houcong.HCRecipes;
+				PRODUCT_BUNDLE_IDENTIFIER = com.recipes.mine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -58,7 +58,9 @@ struct RecipeModel: Codable {
 //    var statData = StatData()
 //    var statJson = ""
 //    var isVip = 0
-    
+    init() {
+        
+    }
     init(recipe: [String : Any]) {
         code = recipe["code"] as? Int ?? 0
         name = recipe["name"] as? String ?? ""

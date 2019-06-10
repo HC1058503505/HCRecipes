@@ -9,8 +9,10 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import SnapKit
 class RecipesHomeViewController: UIViewController {
     
+    fileprivate let errorBtn = UIButton(type: UIButton.ButtonType.custom)
     fileprivate let disposeBag = DisposeBag()
     fileprivate var recipeModels = [RecipeModel]()
     fileprivate var page = 0
@@ -20,13 +22,34 @@ class RecipesHomeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        title = "我的菜谱"
         view.backgroundColor = UIColor.white
         navigationController?.navigationBar.prefersLargeTitles = true
-        let tableView = UITableView(frame: UIScreen.main.bounds, style: UITableView.Style.plain)
+        
+        let tableView = UITableView(frame: CGRect.zero, style: UITableView.Style.plain)
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.rowHeight = 120
         view.addSubview(tableView)
+        tableView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
+        errorBtn.isHidden = true
+        errorBtn.setTitleColor(UIColor(red: 142.0 / 255.0, green: 142.0 / 255.0, blue: 142.0 / 255.0, alpha: 0.65), for: UIControl.State.normal)
+        errorBtn.setTitle("点击重试", for: UIControl.State.normal)
+        view.addSubview(errorBtn)
+        errorBtn.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+        }
+        errorBtn.rx.controlEvent(UIControlEvents.touchUpInside)
+            .subscribe(onNext: { _ in
 
+            })
+            .disposed(by: disposeBag)
+        
+        
+        
         
         
         let searchVC = UISearchController(searchResultsController: searchResultVC)
@@ -45,7 +68,6 @@ class RecipesHomeViewController: UIViewController {
         
         var tableViewOriginOffsetY = tableView.contentOffset.y
         var tableViewContensize = tableView.contentSize
-        
         MoyaHTTP.searchRecipes(keywords: "家常菜", page: page)
             .subscribe(onNext: {[weak self] (recipes) in
                 self?.recipeModels.append(contentsOf: recipes)
@@ -53,8 +75,24 @@ class RecipesHomeViewController: UIViewController {
                 tableViewOriginOffsetY = tableView.contentOffset.y
                 tableViewContensize = tableView.contentSize
                 self!.page = self!.page + 1
+            }, onError: { error in
+                debugPrint(error.localizedDescription)
+                tableView.isHidden = true
+                self.errorBtn.isHidden = false
+            }, onCompleted: {
+                
             })
             .disposed(by: disposeBag)
+        
+//        MoyaHTTP.searchRecipes(keywords: "家常菜", page: page)
+//            .subscribe(onNext: {[weak self] (recipes) in
+//                self?.recipeModels.append(contentsOf: recipes)
+//                tableView.reloadData()
+//                tableViewOriginOffsetY = tableView.contentOffset.y
+//                tableViewContensize = tableView.contentSize
+//                self!.page = self!.page + 1
+//            })
+//            .disposed(by: disposeBag)
         
         var isPullUpToRefresh = false
         var isPullDownToRefresh = false
@@ -128,7 +166,7 @@ class RecipesHomeViewController: UIViewController {
 
 }
 
-extension RecipesHomeViewController: UITableViewDataSource {
+extension RecipesHomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return recipeModels.count
     }
@@ -142,4 +180,9 @@ extension RecipesHomeViewController: UITableViewDataSource {
         return cell
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let recipesVC = RecipesDetailViewController()
+        recipesVC.recipe = recipeModels[indexPath.row]
+        navigationController?.pushViewController(recipesVC, animated: true)
+    }
 }
